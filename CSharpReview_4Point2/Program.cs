@@ -26,40 +26,34 @@ namespace CSharpReview_4Point2
             decimal aDecimal; // Also decimal values (extremely precise).
 
 
-            string name;
+            int userInput;
+            string output;
 
-            // Write a prompt.
-            // Write will keep the cursor on the same line, WriteLine will not.
-            Console.Write("Please enter your name: ");
+            Console.Write("Please enter a number: ");
 
-            // Input from the console.
-            // Trim() will remove all leading and trailing whitespace (newlines, spaces, tabs, etc).
-            name = Console.ReadLine().Trim();
+            // int.Parse is "dangerous" because it can throw an exception.
+            userInput = int.Parse(Console.ReadLine());
 
-            // Condition is an expression that evaluates to either true or false. 
-            // True runs the "if" side, false runs the "else" side.
+            // Switch works with discrete values, not ranges like if allows, but some people find it more readable.
+            // Anything* you can do with a switch, you can do with an if/else.
+            // * Falling through cases is questionable with if/else as you need some other logic, but it's questionable whether
+            // that should be done anyways.
 
-            // Roughly equivalent to name == "", except it also treats null as empty, and any whitespace.
-            // Whitespace should be already trimmed, but the extra layer doesn't necessarily hurt.
-            if (string.IsNullOrWhiteSpace(name))
+            switch (userInput % 2)
             {
-                Console.WriteLine("Invalid Input: Please enter a name.");
+                case 0:
+                    output = "even";
+                    break;
+                case 1:
+                    output = "odd";
+                    break;
+                default:
+                    output = "error";
+                    break;
             }
-            else if (name.ToUpper() == "ADMIN")
-            {
-                Console.WriteLine("Administrative access granted.");
-            }
-            else
-            {
-                // Output to the console.
-                // Concatenation.
-                Console.WriteLine("Hello " + name + "! What a nice day today!");
-                // Parameterized Output.
-                Console.WriteLine("Hello {0}! What a nice day today!", name);
-                // String Interpolation.
-                Console.WriteLine($"Hello {name}! What a nice day today!");
-            }
-            
+
+            Console.WriteLine($"The number entered is {userInput}, it is {output}.");
+
 
             // Exit point of programs in C#.
         }
