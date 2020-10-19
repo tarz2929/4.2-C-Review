@@ -30,7 +30,8 @@ namespace CSharpReview_4Point2
             Console.Write("Please enter your name: ");
 
             // Input from the console.
-            name = Console.ReadLine();
+            // Trim() will remove all leading and trailing whitespace (newlines, spaces, tabs, etc).
+            name = Console.ReadLine().Trim();
 
             // Output to the console.
             // Concatenation.
