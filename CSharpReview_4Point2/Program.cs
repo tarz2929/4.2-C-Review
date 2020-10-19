@@ -7,6 +7,9 @@ namespace CSharpReview_4Point2
         static void Main(string[] args)
         // Entry point of programs in C#.
         {
+            // In-Class Exercise: 
+            // Make the "Admin" decision branch case-insensitive.
+            
             // Declaration of a variable.
             char aChar; // A single character value.
             string aString; // String (collection of characters) values.
