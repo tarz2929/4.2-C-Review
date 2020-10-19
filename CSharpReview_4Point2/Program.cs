@@ -33,13 +33,30 @@ namespace CSharpReview_4Point2
             // Trim() will remove all leading and trailing whitespace (newlines, spaces, tabs, etc).
             name = Console.ReadLine().Trim();
 
-            // Output to the console.
-            // Concatenation.
-            Console.WriteLine("Hello "+name+"! What a nice day today!");
-            // Parameterized Output.
-            Console.WriteLine("Hello {0}! What a nice day today!", name);
-            // String Interpolation.
-            Console.WriteLine($"Hello {name}! What a nice day today!");
+            // Condition is an expression that evaluates to either true or false. 
+            // True runs the "if" side, false runs the "else" side.
+
+            // Roughly equivalent to name == "", except it also treats null as empty, and any whitespace.
+            // Whitespace should be already trimmed, but the extra layer doesn't necessarily hurt.
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                Console.WriteLine("Invalid Input: Please enter a name.");
+            }
+            else if (name == "Admin")
+            {
+                Console.WriteLine("Administrative access granted.");
+            }
+            else
+            {
+                // Output to the console.
+                // Concatenation.
+                Console.WriteLine("Hello " + name + "! What a nice day today!");
+                // Parameterized Output.
+                Console.WriteLine("Hello {0}! What a nice day today!", name);
+                // String Interpolation.
+                Console.WriteLine($"Hello {name}! What a nice day today!");
+            }
+            
 
             // Exit point of programs in C#.
         }
