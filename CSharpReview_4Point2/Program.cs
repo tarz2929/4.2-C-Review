@@ -25,13 +25,22 @@ namespace CSharpReview_4Point2
 
             string name;
 
+            // Write a prompt.
+            // Write will keep the cursor on the same line, WriteLine will not.
+            Console.Write("Please enter your name: ");
+
             // Input from the console.
             name = Console.ReadLine();
 
             // Output to the console.
-            Console.WriteLine("Hello World! What a nice day today!");
+            // Concatenation.
+            Console.WriteLine("Hello "+name+"! What a nice day today!");
+            // Parameterized Output.
+            Console.WriteLine("Hello {0}! What a nice day today!", name);
+            // String Interpolation.
+            Console.WriteLine($"Hello {name}! What a nice day today!");
 
-        // Exit point of programs in C#.
+            // Exit point of programs in C#.
         }
     }
 }
