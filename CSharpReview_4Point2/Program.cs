@@ -13,42 +13,30 @@ namespace CSharpReview_4Point2
 
         // Entry point of programs in C#.
         {
-            List<int> intList = new List<int>();
+            List<string> nameList = new List<string>();
 
-            int userInput = 1;
+            string userInput = "";
             do
             {
-                userInput = GetInt("Please enter a positive integer to add to the list, or a negative one to exit: ");
-                if (userInput > 0)
+                userInput = GetName("Please enter a name to add to the list, or \"exit\" to exit: ");
+                if (userInput != "exit")
                 {
-                    intList.Add(userInput);
+                    nameList.Add(userInput);
                 }
-            } while (userInput > 0);
-
-            intList[6] = 10;
+            } while (userInput.ToLower() != "exit");
 
             // foreach will loop over every item in a collection, however they are typically treated as readonly (with "normal" data types anyways).
-            foreach(int integer in intList)
+            foreach(string name in nameList)
             {
-                Console.WriteLine(integer);
+                Console.WriteLine(name);
             }
         }
 
-        /*
-            static: Tells C# to only keep one copy of the method in memory (important for OOP).
-            int: Return type, the type of data coming out of the method.
-            GetInt: Name of the method, how we call it.
-            string: First parameter type, the type of input expected.
-            prompt: First parameter/argument name, how we refer to that value in the method.
-        */
-        static int GetInt(string prompt)
+        static string GetName(string prompt)
         {
-            int input;
-
             Console.Write(prompt);
-            input = int.Parse(Console.ReadLine());
-
-            return input;
+            
+            return Console.ReadLine().Trim();
         }
     }
 }
