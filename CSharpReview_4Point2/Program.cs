@@ -15,7 +15,7 @@ namespace CSharpReview_4Point2
         {
             List<string> nameList = new List<string>();
 
-            int userNumber = GetInt("Please enter an integer: ");
+            int userNumber = GetInt("Please enter an integer between 1 and 10: ", 1, 10);
 
             string userInput = "";
             do
@@ -70,9 +70,37 @@ namespace CSharpReview_4Point2
                     input = int.Parse(Console.ReadLine());
                     valid = true;
                 }
-                catch
+                catch (Exception e)
                 {
-                    Console.WriteLine("Error: Invalid Integer");
+                    Console.WriteLine($"Error: {e.Message}");
+                }
+            }
+            while (!valid);
+
+            return input;
+        }
+
+        // "Overloading" a method refers to having multiple method signatures with the same name, but different parameters.
+        static int GetInt(string prompt, int min, int max)
+        {
+            int input = 0;
+            bool valid = false;
+            // "Validation Loop"
+            do
+            {
+                Console.Write(prompt);
+                try
+                {
+                    input = int.Parse(Console.ReadLine());
+                    if (input < min || input > max)
+                    {
+                        throw new Exception($"The supplied value must be between {min} and {max} inclusive.");
+                    }
+                    valid = true;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"Error: {e.Message}");
                 }
             }
             while (!valid);
