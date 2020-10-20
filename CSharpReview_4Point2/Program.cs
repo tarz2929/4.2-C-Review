@@ -1,21 +1,34 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace CSharpReview_4Point2
 {
     class Program
     {
         static void Main(string[] args)
+        // In class practice:
+        // Change the program to take in a list of names. Make sure the names are trimmed before they enter the list.
+        // Change the GetInt() method to GetName().
+        // Challenge: Prevent duplicates (case insensitive) from being added.
+
         // Entry point of programs in C#.
         {
-            int[] intArray = new int[GetInt("Please enter a number of integers to store: ")];
+            List<int> intList = new List<int>();
 
-            for (int i = 0; i < intArray.Length; i++)
+            int userInput = 1;
+            do
             {
-                intArray[i] = GetInt($"Please enter integer #{i + 1}: ");
-            }
+                userInput = GetInt("Please enter a positive integer to add to the list, or a negative one to exit: ");
+                if (userInput > 0)
+                {
+                    intList.Add(userInput);
+                }
+            } while (userInput > 0);
+
+            intList[6] = 10;
 
             // foreach will loop over every item in a collection, however they are typically treated as readonly (with "normal" data types anyways).
-            foreach(int integer in intArray)
+            foreach(int integer in intList)
             {
                 Console.WriteLine(integer);
             }
