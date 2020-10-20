@@ -15,8 +15,7 @@ namespace CSharpReview_4Point2
         // Entry point of programs in C#.
         {
             List<string> nameList = new List<string>();
-
-            int userNumber = GetInt("Please enter an integer between 1 and 10: ", 1, 10);
+            List<int> ageList = new List<int>();
 
             string userInput = "";
             do
@@ -37,17 +36,18 @@ namespace CSharpReview_4Point2
                         Console.WriteLine("That name is already in the list.");
                     }
                     else
-                    {
+                    { 
                         nameList.Add(userInput);
+                        ageList.Add(GetInt($"Please enter the age for {userInput}: ", 1, 100));
                     }
                 }
             // "Sentinel Value Loop"
             } while (userInput.ToLower() != "exit");
 
             // foreach will loop over every item in a collection, however they are typically treated as readonly (with "normal" data types anyways).
-            foreach(string name in nameList)
+            for (int i = 0; i < nameList.Count; i++)
             {
-                Console.WriteLine(name);
+                Console.WriteLine($"{nameList[i]} is {ageList[i]} years old.");
             }
         }
 
