@@ -7,9 +7,18 @@ namespace CSharpReview_4Point2
         static void Main(string[] args)
         // Entry point of programs in C#.
         {
-            int age = GetInt("Please enter your age: ");
-
             int[] intArray = new int[GetInt("Please enter a number of integers to store: ")];
+
+            for (int i = 0; i < intArray.Length; i++)
+            {
+                intArray[i] = GetInt($"Please enter integer #{i + 1}: ");
+            }
+
+            // foreach will loop over every item in a collection, however they are typically treated as readonly (with "normal" data types anyways).
+            foreach(int integer in intArray)
+            {
+                Console.WriteLine(integer);
+            }
         }
 
         /*
