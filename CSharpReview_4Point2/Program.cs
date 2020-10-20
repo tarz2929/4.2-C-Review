@@ -3,6 +3,13 @@ using System.Collections.Generic;
 
 namespace CSharpReview_4Point2
 {
+
+    class Person
+    {
+        public string Name { get; set; }
+        public int Age { get; set; }
+    }
+
     class Program
     {
         static void Main(string[] args)
@@ -14,16 +21,16 @@ namespace CSharpReview_4Point2
 
         // Entry point of programs in C#.
         {
-            List<string> nameList = new List<string>();
-            List<int> ageList = new List<int>();
+            List<Person> personList = new List<Person>();
 
             string userInput = "";
             do
             {
+                Person toAdd = new Person();
                 userInput = GetName("Please enter a name to add to the list, or \"exit\" to exit: ");
                 if (userInput != "exit")
                 {
-                    if (nameList.Exists(x => x.ToUpper() == userInput.ToUpper()))
+                    if (personList.Exists(x => x.Name.ToUpper() == userInput.ToUpper()))
                     // Exists() accepts a predicate, which is typically expressed as an arrow function (but not always).
                     // The left of the arrow is the input, and the right of the arrow is the return.
                     /*
@@ -36,18 +43,19 @@ namespace CSharpReview_4Point2
                         Console.WriteLine("That name is already in the list.");
                     }
                     else
-                    { 
-                        nameList.Add(userInput);
-                        ageList.Add(GetInt($"Please enter the age for {userInput}: ", 1, 100));
+                    {
+                        toAdd.Name = userInput;
+                        toAdd.Age = GetInt($"Please enter the age for {userInput}: ", 1, 100);
+                        personList.Add(toAdd);
                     }
                 }
             // "Sentinel Value Loop"
             } while (userInput.ToLower() != "exit");
 
             // foreach will loop over every item in a collection, however they are typically treated as readonly (with "normal" data types anyways).
-            for (int i = 0; i < nameList.Count; i++)
+            foreach (Person person in personList)
             {
-                Console.WriteLine($"{nameList[i]} is {ageList[i]} years old.");
+                Console.WriteLine($"{person.Name} is {person.Age} years old.");
             }
         }
 
