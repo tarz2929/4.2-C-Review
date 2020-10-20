@@ -7,9 +7,10 @@ namespace CSharpReview_4Point2
     {
         static void Main(string[] args)
         // In class practice:
-        // Change the program to take in a list of names. Make sure the names are trimmed before they enter the list.
-        // Change the GetInt() method to GetName().
-        // Challenge: Prevent duplicates (case insensitive) from being added.
+        // Combine the two list programs we've looked at. Prompt for both a name, and an age (between 1 and 100), until the name entered is "exit" (case insensitive).
+        // Once exited, output "$name is $age years old." for each stored person.
+        // Hint: You'll need multiple arrays.
+        // Challenge: Create a class/object to store the name and age, and use only one list.
 
         // Entry point of programs in C#.
         {
